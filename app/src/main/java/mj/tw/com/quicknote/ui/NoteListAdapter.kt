@@ -1,12 +1,10 @@
 package mj.tw.com.quicknote.ui
 
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import mj.tw.com.quicknote.Note
 import mj.tw.com.quicknote.R
 
 /**
