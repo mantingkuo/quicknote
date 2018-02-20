@@ -27,7 +27,9 @@
             android:layout_weight="1"
             android:background="@android:color/black"
             android:text="@string/cancel"
-            android:textColor="@android:color/white" />
+            android:onClick="onCancel"
+            android:textColor="@android:color/white"
+            style="@style/Widget.AppCompat.Button.Colored"/>
 
         <View
             android:layout_width="1dp"
@@ -40,6 +42,7 @@
             android:background="@android:color/black"
             android:text="@string/save"
             android:textColor="@android:color/white"
-            android:onClick="onSave"/>
+            android:onClick="onSave"
+            style="@style/Widget.AppCompat.Button.Colored"/>
     </LinearLayout>
 </LinearLayout>

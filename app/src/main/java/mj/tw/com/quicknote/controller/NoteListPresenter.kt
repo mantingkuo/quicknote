@@ -26,9 +26,7 @@ class NoteListPresenter : ViewModel(), NoteListContract.Presenter {
 //        }
 //        var dbb = DbManager()
 //        notelist = dbb.db.dbAccessMethod().getAllNotes()
-        var note = NoteEntity(null,"hi note","here is note content",6666)
 
-        DbManager.database.dbAccessMethod().addNote(note)
         var notes = DbManager.database.dbAccessMethod().getAllNotes()
         for(n in notes){
             Log.d("mmm","aync:"+n.content)
