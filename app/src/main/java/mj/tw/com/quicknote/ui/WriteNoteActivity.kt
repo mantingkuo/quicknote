@@ -25,6 +25,10 @@ class WriteNoteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_write_note)
+
+        setSupportActionBar(findViewById(R.id.toolbar))
+        supportActionBar!!.title = getString(R.string.write_note_title)
+
         viewContent = findViewById(R.id.content)
     }
 

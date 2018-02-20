@@ -17,6 +17,7 @@ import mj.tw.com.quicknote.controller.NoteListContract
 import mj.tw.com.quicknote.controller.NoteListPresenter
 import android.view.View
 import android.widget.ProgressBar
+import kotlinx.android.synthetic.main.activity_note_list.*
 import mj.tw.com.quicknote.AppApplication
 import mj.tw.com.quicknote.controller.DbManager
 import mj.tw.com.quicknote.data.Note
@@ -34,6 +35,7 @@ class NoteListActivity : AppCompatActivity(), NoteListContract.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_note_list)
+        setSupportActionBar(findViewById(R.id.toolbar))
         mListView = findViewById(R.id.listview)
         mLayoutManager = LinearLayoutManager(this)
         mListView.layoutManager = mLayoutManager
