@@ -7,13 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import mj.tw.com.quicknote.R
+import mj.tw.com.quicknote.data.LiveDataNote
+import mj.tw.com.quicknote.data.Note
 import mj.tw.com.quicknote.data.NoteEntity
+
+//import mj.tw.com.quicknote.data.NoteEntity
 
 /**
  * Created by Mandy on 2/17/18.
  */
 class NoteListAdapter : RecyclerView.Adapter<NoteListAdapter.ViewHolder> {
-    var mData : ArrayList<NoteEntity>
+    var mData : List<NoteEntity>
     class ViewHolder(view: View?) : RecyclerView.ViewHolder(view) {
         var title: TextView
         var summary: TextView
@@ -25,8 +29,8 @@ class NoteListAdapter : RecyclerView.Adapter<NoteListAdapter.ViewHolder> {
             time = view!!.findViewById(R.id.time)
         }
     }
-    constructor(dataset: LiveData<ArrayList<NoteEntity>>){
-        mData = dataset.value!!
+    constructor(dataset: List<NoteEntity>){
+        mData = dataset
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

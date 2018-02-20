@@ -7,7 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.TextView
 import mj.tw.com.quicknote.R
-import mj.tw.com.quicknote.data.NoteEntity
+//import mj.tw.com.quicknote.data.NoteEntity
 import java.text.DateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -26,8 +26,8 @@ class WriteNoteActivity : AppCompatActivity(){
         viewContent = findViewById(R.id.content)
     }
     fun onSave(v:View){
-        var currentNote =  NoteEntity()
-        currentNote.content = viewContent.text.toString()
+//        var currentNote =  NoteEntity()
+//        currentNote.content = viewContent.text.toString()
 //        val calendar = Calendar.getInstance()
 //        currentNote.time = calendar.timeInMillis
 //        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS")

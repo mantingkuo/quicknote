@@ -11,8 +11,8 @@ import android.provider.ContactsContract
  */
 @Dao
 interface DbAccessMethod {
-    @Query("select * from note_content")
-    fun getAllNotes():LiveData<ArrayList<NoteEntity>>
+    @Query("select * from note")
+    fun getAllNotes():List<NoteEntity>
 
     @Insert
     fun addNote(note: NoteEntity)
