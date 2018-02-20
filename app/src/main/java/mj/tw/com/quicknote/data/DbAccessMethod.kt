@@ -1,5 +1,6 @@
 package mj.tw.com.quicknote.data
 
+import android.arch.lifecycle.LiveData
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
 import android.arch.persistence.room.Query
@@ -11,7 +12,7 @@ import android.provider.ContactsContract
 @Dao
 interface DbAccessMethod {
     @Query("select * from note_content")
-    fun getAllNotes():ArrayList<NoteEntity>
+    fun getAllNotes():LiveData<ArrayList<NoteEntity>>
 
     @Insert
     fun addNote(note: NoteEntity)

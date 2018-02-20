@@ -1,6 +1,8 @@
 package mj.tw.com.quicknote
 
 import android.app.Application
+import android.content.Context
+import android.util.Log
 import mj.tw.com.quicknote.utility.AppState
 
 /**

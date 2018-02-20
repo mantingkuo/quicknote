@@ -28,8 +28,8 @@ class WriteNoteActivity : AppCompatActivity(){
     fun onSave(v:View){
         var currentNote =  NoteEntity()
         currentNote.content = viewContent.text.toString()
-        val calendar = Calendar.getInstance()
-        currentNote.time = calendar.timeInMillis
+//        val calendar = Calendar.getInstance()
+//        currentNote.time = calendar.timeInMillis
 //        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS")
     }
 }

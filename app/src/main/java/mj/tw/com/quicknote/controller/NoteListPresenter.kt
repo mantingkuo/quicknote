@@ -1,21 +1,31 @@
 package mj.tw.com.quicknote.controller
 
+import android.arch.lifecycle.LiveData
+import android.arch.lifecycle.ViewModel
 import android.util.Log
 import mj.tw.com.quicknote.data.NoteEntity
 
 /**
  * Created by Mandy on 2/17/18.
  */
-class NoteListPresenter : NoteListContract.Presenter {
-    lateinit var mView: NoteListContract.View
+class NoteListPresenter : ViewModel(), NoteListContract.Presenter {
+    lateinit var contractView: NoteListContract.View
+    lateinit var notelist: LiveData<ArrayList<NoteEntity>>
 
-    constructor(view: NoteListContract.View) {
-        mView = view
+//    constructor(view: NoteListContract.View) {
+//       this.view = view
+//    }
+
+    override fun getData(): LiveData<ArrayList<NoteEntity>> {
+//        if(DbManager.db == null){
+//            Log.d("mmm","null")
+//        }
+        var dbb = DbManager()
+        notelist = dbb.db.dbAccessMethod().getAllNotes()
+        return notelist
     }
 
-    override fun getData(): ArrayList<NoteEntity> {
-        var array:ArrayList<NoteEntity> = DbManager.db.dbAccessMethod().getAllNotes()
-        Log.d("mmm", "len:"+array.size)
-        return array
+    fun setView(view: NoteListContract.View) {
+        contractView = view
     }
 }

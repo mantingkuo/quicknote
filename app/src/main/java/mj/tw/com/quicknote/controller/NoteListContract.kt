@@ -1,5 +1,6 @@
 package mj.tw.com.quicknote.controller
 
+import android.arch.lifecycle.LiveData
 import mj.tw.com.quicknote.data.NoteEntity
 
 /**
@@ -10,6 +11,6 @@ interface NoteListContract {
     interface View {}
 
     interface Presenter {
-        fun getData(): ArrayList<NoteEntity>
+        fun getData(): LiveData<ArrayList<NoteEntity>>
     }
 }
