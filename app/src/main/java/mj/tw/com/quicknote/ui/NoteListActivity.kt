@@ -30,7 +30,7 @@ import mj.tw.com.quicknote.data.NoteEntity
 class NoteListActivity : AppCompatActivity(), NoteListContract.View {
     var mLayoutManager: RecyclerView.LayoutManager? = null
     lateinit var mPresenter: NoteListPresenter
-    lateinit var mListView:RecyclerView
+    lateinit var mListView: RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_note_list)
@@ -43,24 +43,25 @@ class NoteListActivity : AppCompatActivity(), NoteListContract.View {
 //        mPresenter.getData().observe(this, Observer<ArrayList<NoteEntity>>{ t->mListView.adapter.notifyDataSetChanged()})
     }
 
-    fun onWriteNote(v:View){
-        var i:Intent = Intent(this,WriteNoteActivity::class.java)
+    fun onWriteNote(v: View) {
+        var i: Intent = Intent(this, WriteNoteActivity::class.java)
         startActivity(i)
     }
 
-    inner class GetDataAsync: AsyncTask<NoteListPresenter, Void, List<NoteEntity>>() {
+    inner class GetDataAsync : AsyncTask<NoteListPresenter, Void, List<NoteEntity>>() {
         lateinit var loadingDialog: ProgressBar
         override fun onPreExecute() {
             super.onPreExecute()
             loadingDialog = ProgressBar(this@NoteListActivity)
-            loadingDialog.isIndeterminate= true
+            loadingDialog.isIndeterminate = true
             loadingDialog.visibility = View.VISIBLE
         }
+
         override fun doInBackground(vararg p0: NoteListPresenter?): List<NoteEntity> {
             return p0.get(0)?.getData()!!
         }
 
-        override fun onPostExecute(result:List<NoteEntity>) {
+        override fun onPostExecute(result: List<NoteEntity>) {
             super.onPostExecute(result)
             mListView.adapter = NoteListAdapter(result)
             loadingDialog.visibility = View.INVISIBLE

@@ -31,12 +31,13 @@ class WriteNoteActivity : AppCompatActivity() {
     fun onSave(v: View) {
         val t = SaveThread()
         t.start()
-//        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS")
         finish()
     }
+
     fun onCancel(v: View) {
         finish()
     }
+
     inner class SaveThread : Thread() {
         override fun run() {
             val calendar = Calendar.getInstance()

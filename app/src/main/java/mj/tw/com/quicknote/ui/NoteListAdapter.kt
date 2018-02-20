@@ -2,6 +2,7 @@ package mj.tw.com.quicknote.ui
 
 import android.arch.lifecycle.LiveData
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,11 @@ import mj.tw.com.quicknote.R
 import mj.tw.com.quicknote.data.LiveDataNote
 import mj.tw.com.quicknote.data.Note
 import mj.tw.com.quicknote.data.NoteEntity
+import java.time.Month
+import java.time.Year
+import java.time.format.DateTimeFormatter
+import java.util.*
+import java.util.Calendar.*
 
 //import mj.tw.com.quicknote.data.NoteEntity
 
@@ -17,11 +23,12 @@ import mj.tw.com.quicknote.data.NoteEntity
  * Created by Mandy on 2/17/18.
  */
 class NoteListAdapter : RecyclerView.Adapter<NoteListAdapter.ViewHolder> {
-    var mData : List<NoteEntity>
+    var mData: List<NoteEntity>
+
     class ViewHolder(view: View?) : RecyclerView.ViewHolder(view) {
         var title: TextView
         var summary: TextView
-        var time : TextView
+        var time: TextView
 
         init {
             title = view!!.findViewById(R.id.title)
@@ -29,7 +36,8 @@ class NoteListAdapter : RecyclerView.Adapter<NoteListAdapter.ViewHolder> {
             time = view!!.findViewById(R.id.time)
         }
     }
-    constructor(dataset: List<NoteEntity>){
+
+    constructor(dataset: List<NoteEntity>) {
         mData = dataset
     }
 
@@ -41,7 +49,12 @@ class NoteListAdapter : RecyclerView.Adapter<NoteListAdapter.ViewHolder> {
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
         holder!!.title.text = mData[position].title
         holder!!.summary.text = mData[position].content
-        holder!!.time.text = mData[position].time.toString()
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = mData[position].time
+        val formatter = String.format("%d/%d/%d %d:%d:%d", calendar.get(YEAR),
+                calendar.get(MONTH) + 1, calendar.get(DATE), calendar.get(HOUR),
+                calendar.get(MINUTE), calendar.get(SECOND))
+        holder!!.time.text = formatter
     }
 
     override fun getItemCount(): Int {
