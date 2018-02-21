@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="9.3">
+    android:weightSum="9.3"
+    android:background="@color/allBg">
+
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -13,18 +15,27 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/actionbar_bg"
-            app:theme="@style/ToolBarStyle"/>
+            android:background="@color/actionbarBg"
+            app:theme="@style/ToolBarStyle" />
 
     </android.support.design.widget.AppBarLayout>
+
+    <EditText
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:hint="@string/write_note_hint_title"
+        android:padding="10dp" />
+
     <EditText
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="8.5"
-        android:padding="10dp"
+        android:layout_weight="7.5"
         android:hint="@string/write_note_hint"
-        android:background="@color/bg_brown"/>
+        android:padding="10dp" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -34,27 +45,27 @@
         android:weightSum="2">
 
         <Button
+            style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/write_btn_bg"
-            android:text="@string/cancel"
+            android:background="@color/writeBtnBg"
             android:onClick="onCancel"
-            android:textColor="@android:color/white"
-            style="@style/Widget.AppCompat.Button.Colored"/>
+            android:text="@string/cancel"
+            android:textColor="@android:color/white" />
 
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent" />
 
         <Button
+            style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/write_btn_bg"
-            android:text="@string/save"
-            android:textColor="@android:color/white"
+            android:background="@color/writeBtnBg"
             android:onClick="onSave"
-            style="@style/Widget.AppCompat.Button.Colored"/>
+            android:text="@string/save"
+            android:textColor="@android:color/white" />
     </LinearLayout>
 </LinearLayout>

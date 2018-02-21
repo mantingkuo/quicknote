@@ -3,5 +3,6 @@
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
     <string name="write_note_hint">Write something...</string>
+    <string name="write_note_hint_title">Title...</string>
     <string name="write_note_title">Add Note</string>
 </resources>

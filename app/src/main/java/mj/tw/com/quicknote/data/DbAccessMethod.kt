@@ -12,7 +12,7 @@ import android.provider.ContactsContract
 @Dao
 interface DbAccessMethod {
     @Query("select * from note")
-    fun getAllNotes():List<NoteEntity>
+    fun getAllNotes(): LiveData<List<NoteEntity>>
 
     @Insert
     fun addNote(note: NoteEntity)

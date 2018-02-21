@@ -17,6 +17,5 @@ class AppApplication : Application() {
         super.onCreate()
         AppState.appContext = applicationContext
         DbManager.initDbManager()
-
     }
 }

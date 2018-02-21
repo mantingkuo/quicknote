@@ -2,16 +2,11 @@ package mj.tw.com.quicknote.ui
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.View
 import android.widget.TextView
 import mj.tw.com.quicknote.R
 import mj.tw.com.quicknote.controller.DbManager
 import mj.tw.com.quicknote.data.NoteEntity
-//import mj.tw.com.quicknote.data.NoteEntity
-import java.text.DateFormat
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 /**

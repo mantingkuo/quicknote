@@ -1,10 +1,7 @@
 package mj.tw.com.quicknote.controller
 
-//import android.arch.persistence.room.Room
 import android.arch.persistence.room.Room
-import android.util.Log
 import mj.tw.com.quicknote.data.AppDb
-//import mj.tw.com.quicknote.data.AppDb
 import mj.tw.com.quicknote.utility.AppState
 
 /**
@@ -12,12 +9,10 @@ import mj.tw.com.quicknote.utility.AppState
  */
 class DbManager {
     companion object {
+        val DB_NAME = "note.db"
         lateinit var database: AppDb
         fun initDbManager() {
-            database = Room.databaseBuilder(AppState.appContext, AppDb::class.java, "note.db").build()
+            database = Room.databaseBuilder(AppState.appContext, AppDb::class.java, DB_NAME).build()
         }
     }
-
-//    var db = Room.databaseBuilder(AppState.appContext,
-//            AppDb::class.java, "database-name").build()
 }
