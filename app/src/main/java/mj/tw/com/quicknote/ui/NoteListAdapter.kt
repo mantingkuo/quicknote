@@ -65,6 +65,13 @@ class NoteListAdapter : RecyclerView.Adapter<NoteListAdapter.ViewHolder> {
         }
 
         var noteContent = data[position].content
+        if (noteContent.isNotEmpty()) {
+            holder!!.summary.visibility = View.VISIBLE
+            holder!!.summary.text = noteContent
+        } else {
+            holder!!.summary.visibility = View.GONE
+        }
+
         when (noteContent.length) {
             in START_INDEX..END_INDEX -> noteContent
             else -> {
