@@ -9,9 +9,14 @@ import mj.tw.com.quicknote.data.NoteEntity
  */
 class NoteListPresenter : ViewModel(), NoteListContract.Presenter {
     lateinit var contractView: NoteListContract.View
+    lateinit var notes: LiveData<List<NoteEntity>>
 
-    override fun getData(): LiveData<List<NoteEntity>> {
-        var notes = DbManager.database.dbAccessMethod().getAllNotes()
+    override fun getData(index: Int): NoteEntity {
+        return notes.value!!.get(index)
+    }
+
+    override fun getDatas(): LiveData<List<NoteEntity>> {
+        notes = DbManager.getAllNote()
         return notes
     }
 

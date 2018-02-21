@@ -5,4 +5,5 @@
     <string name="write_note_hint">Write something...</string>
     <string name="write_note_hint_title">Title...</string>
     <string name="write_note_title">Add Note</string>
+    <string name="save_empty">Please write title or content down...</string>
 </resources>

@@ -11,6 +11,7 @@ interface NoteListContract {
     interface View {}
 
     interface Presenter {
-        fun getData(): LiveData<List<NoteEntity>>
+        fun getDatas(): LiveData<List<NoteEntity>>
+        fun getData(index: Int): NoteEntity
     }
 }

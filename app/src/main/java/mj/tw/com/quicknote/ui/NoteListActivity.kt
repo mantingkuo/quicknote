@@ -51,13 +51,13 @@ class NoteListActivity : AppCompatActivity(), NoteListContract.View {
 
         override fun doInBackground(vararg p0: NoteListPresenter?): List<NoteEntity>? {
             presenter = p0.get(0)!!
-            return p0.get(0)!!.getData()!!.value
+            return p0.get(0)!!.getDatas()!!.value
         }
 
         override fun onPostExecute(result: List<NoteEntity>?) {
             super.onPostExecute(result)
-            var adapter = NoteListAdapter(result)
-            presenter.getData().observe(this@NoteListActivity, Observer { t ->
+            var adapter = NoteListAdapter(result, this@NoteListActivity)
+            presenter.getDatas().observe(this@NoteListActivity, Observer { t ->
                 adapter.addNotes(t!!)
             })
             listView.adapter = adapter

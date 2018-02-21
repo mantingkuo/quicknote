@@ -3,7 +3,9 @@ package mj.tw.com.quicknote.data
 import android.arch.lifecycle.LiveData
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
+import android.arch.persistence.room.OnConflictStrategy.REPLACE
 import android.arch.persistence.room.Query
+import android.arch.persistence.room.Update
 import android.provider.ContactsContract
 
 /**
@@ -16,4 +18,7 @@ interface DbAccessMethod {
 
     @Insert
     fun addNote(note: NoteEntity)
+
+    @Update
+    fun updateNote(note: NoteEntity)
 }
