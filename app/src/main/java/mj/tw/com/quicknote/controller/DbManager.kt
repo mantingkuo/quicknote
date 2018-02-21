@@ -3,7 +3,6 @@ package mj.tw.com.quicknote.controller
 import android.arch.lifecycle.LiveData
 import android.arch.persistence.room.Room
 import mj.tw.com.quicknote.data.AppDb
-import mj.tw.com.quicknote.data.Note
 import mj.tw.com.quicknote.data.NoteEntity
 import mj.tw.com.quicknote.utility.AppState
 

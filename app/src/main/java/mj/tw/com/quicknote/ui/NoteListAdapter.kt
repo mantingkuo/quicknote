@@ -20,7 +20,9 @@ import java.util.Calendar.*
  */
 class NoteListAdapter : RecyclerView.Adapter<NoteListAdapter.ViewHolder> {
     var data = listOf<NoteEntity>()
-    lateinit var context: Context
+    var context: Context
+    val START_INDEX = 0
+    val END_INDEX = 20
 
     class ViewHolder(view: View?) : RecyclerView.ViewHolder(view) {
         var title: TextView
@@ -54,12 +56,26 @@ class NoteListAdapter : RecyclerView.Adapter<NoteListAdapter.ViewHolder> {
     }
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
-        holder!!.title.text = data[position].title
-        holder!!.summary.text = data[position].content
+        var title = data[position].title
+        if (title.isNotEmpty()) {
+            holder!!.title.visibility = View.VISIBLE
+            holder!!.title.text = title
+        } else {
+            holder!!.title.visibility = View.GONE
+        }
+
+        var noteContent = data[position].content
+        when (noteContent.length) {
+            in START_INDEX..END_INDEX -> noteContent
+            else -> {
+                noteContent = noteContent.substring(START_INDEX, END_INDEX) + "..."
+            }
+        }
+        holder!!.summary.text = noteContent
         val calendar = Calendar.getInstance()
         calendar.timeInMillis = data[position].time
         val formatter = String.format("%d/%d/%d %d:%d:%d", calendar.get(YEAR),
-                calendar.get(MONTH) + 1, calendar.get(DATE), calendar.get(HOUR),
+                calendar.get(MONTH) + 1, calendar.get(DATE), calendar.get(HOUR_OF_DAY),
                 calendar.get(MINUTE), calendar.get(SECOND))
         holder!!.time.text = formatter
         holder.item.setOnClickListener({
