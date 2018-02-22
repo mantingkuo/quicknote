@@ -20,7 +20,7 @@ import mj.tw.com.quicknote.data.NoteEntity
  */
 class NoteListActivity : AppCompatActivity(), NoteListContract.View {
     var layoutManager: RecyclerView.LayoutManager? = null
-    lateinit var presenter: NoteListPresenter
+    lateinit var presenter: NoteListContract.Presenter
     lateinit var listView: RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +30,7 @@ class NoteListActivity : AppCompatActivity(), NoteListContract.View {
         layoutManager = LinearLayoutManager(this)
         listView.layoutManager = layoutManager
         presenter = ViewModelProviders.of(this).get(NoteListPresenter::class.java)
-        presenter.setView(this)
+        presenter.setupView(this)
         GetDataAsync().execute(presenter)
     }
 
@@ -39,9 +39,9 @@ class NoteListActivity : AppCompatActivity(), NoteListContract.View {
         startActivity(i)
     }
 
-    inner class GetDataAsync : AsyncTask<NoteListPresenter, Void, List<NoteEntity>?>() {
+    inner class GetDataAsync : AsyncTask<NoteListContract.Presenter, Void, List<NoteEntity>?>() {
         lateinit var loadingDialog: ProgressBar
-        lateinit var presenter: NoteListPresenter
+        lateinit var presenter: NoteListContract.Presenter
         override fun onPreExecute() {
             super.onPreExecute()
             loadingDialog = ProgressBar(this@NoteListActivity)
@@ -49,7 +49,7 @@ class NoteListActivity : AppCompatActivity(), NoteListContract.View {
             loadingDialog.visibility = View.VISIBLE
         }
 
-        override fun doInBackground(vararg p0: NoteListPresenter?): List<NoteEntity>? {
+        override fun doInBackground(vararg p0: NoteListContract.Presenter?): List<NoteEntity>? {
             presenter = p0.get(0)!!
             return p0.get(0)!!.getDatas()!!.value
         }

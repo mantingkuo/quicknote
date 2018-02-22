@@ -8,9 +8,10 @@ import mj.tw.com.quicknote.data.NoteEntity
  */
 
 interface NoteListContract {
-    interface View {}
+    interface View : BaseContractView {}
 
-    interface Presenter {
+    interface Presenter : BasePresenter {
+        fun setupView(view: View)
         fun getDatas(): LiveData<List<NoteEntity>>
         fun getData(index: Int): NoteEntity
     }

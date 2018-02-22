@@ -10,6 +10,9 @@ import mj.tw.com.quicknote.data.NoteEntity
 class NoteListPresenter : ViewModel(), NoteListContract.Presenter {
     lateinit var contractView: NoteListContract.View
     lateinit var notes: LiveData<List<NoteEntity>>
+    override fun setupView(view: NoteListContract.View) {
+        contractView = view
+    }
 
     override fun getData(index: Int): NoteEntity {
         return notes.value!!.get(index)
