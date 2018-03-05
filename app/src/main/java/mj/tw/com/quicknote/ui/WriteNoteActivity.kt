@@ -71,6 +71,4 @@ class WriteNoteActivity : AppCompatActivity(), WriteNoteContract.View {
     fun onCancel(v: View) {
         finish()
     }
-
-
 }

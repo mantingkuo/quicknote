@@ -22,6 +22,7 @@ class NoteListActivity : AppCompatActivity(), NoteListContract.View {
     var layoutManager: RecyclerView.LayoutManager? = null
     lateinit var presenter: NoteListContract.Presenter
     lateinit var listView: RecyclerView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_note_list)
@@ -31,37 +32,16 @@ class NoteListActivity : AppCompatActivity(), NoteListContract.View {
         listView.layoutManager = layoutManager
         presenter = ViewModelProviders.of(this).get(NoteListPresenter::class.java)
         presenter.setupView(this)
-        GetDataAsync().execute(presenter)
+        var adapter = NoteListAdapter(null, this@NoteListActivity)
+        presenter.getDatas().observe(this@NoteListActivity, Observer { t ->
+            adapter.addNotes(t!!)
+        })
+        listView.adapter = adapter
     }
 
     fun onWriteNote(v: View) {
-        var i: Intent = Intent(this, WriteNoteActivity::class.java)
+        var i = Intent(this, WriteNoteActivity::class.java)
         startActivity(i)
     }
 
-    inner class GetDataAsync : AsyncTask<NoteListContract.Presenter, Void, List<NoteEntity>?>() {
-        lateinit var loadingDialog: ProgressBar
-        lateinit var presenter: NoteListContract.Presenter
-        override fun onPreExecute() {
-            super.onPreExecute()
-            loadingDialog = ProgressBar(this@NoteListActivity)
-            loadingDialog.isIndeterminate = true
-            loadingDialog.visibility = View.VISIBLE
-        }
-
-        override fun doInBackground(vararg p0: NoteListContract.Presenter?): List<NoteEntity>? {
-            presenter = p0.get(0)!!
-            return p0.get(0)!!.getDatas()!!.value
-        }
-
-        override fun onPostExecute(result: List<NoteEntity>?) {
-            super.onPostExecute(result)
-            var adapter = NoteListAdapter(result, this@NoteListActivity)
-            presenter.getDatas().observe(this@NoteListActivity, Observer { t ->
-                adapter.addNotes(t!!)
-            })
-            listView.adapter = adapter
-            loadingDialog.visibility = View.INVISIBLE
-        }
-    }
 }
