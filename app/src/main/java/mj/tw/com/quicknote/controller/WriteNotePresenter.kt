@@ -15,7 +15,6 @@ class WriteNotePresenter : ViewModel(), WriteNoteContract.Presenter {
     }
 
     override fun saveNote(note: NoteEntity, isNew: Boolean) {
-        if (view == null) Log.d("mmm", "vie n1ull")
         var aync = SaveAsync()
         aync.isNew = isNew
         aync.execute(note)
